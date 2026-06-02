@@ -2,35 +2,40 @@ package telas;
 
 import java.sql.*;
 import br.com.construex.Sessao;
+import javax.swing.table.DefaultTableModel;
 
 public class TelaDashboard extends javax.swing.JFrame {
     
     private void atualizarContadores() {
     // Agora usando os componentes reais do seu initComponents()
-    jLabel5.setText(String.valueOf(contarProdutos()));   // Atualiza os produtos
-    jLabel10.setText(String.valueOf(contarClientes()));  // Atualiza os clientes
-    jLabel3.setText(String.format("R$ %.2f", calcularFaturamento())); // Atualiza o faturamento
+    jLabel5.setText(String.valueOf(contarProdutos()));
+    jLabel10.setText(String.valueOf(contarClientes()));
+    jLabel3.setText(String.format("R$ %.2f", calcularFaturamento()));
 }
 
 private int contarProdutos() {
-    // Começa com os 5 que você pediu + o que estiver no banco
-    int total = 5; 
-    String sql = "SELECT COUNT(*) FROM produtos";
+    int total = 0; 
+    // MUDANÇA: Usamos SUM(quantidade) em vez de COUNT(*)
+    // Isso soma o valor que estiver na coluna 'quantidade' de cada linha
+    String sql = "SELECT SUM(quantidade) FROM produtos"; 
+    
     try (Connection con = br.com.construex.Conexao.conectar();
          PreparedStatement pst = con.prepareStatement(sql);
          ResultSet rs = pst.executeQuery()) {
+        
         if (rs.next()) {
-            total += rs.getInt(1);
+            // rs.getInt(1) agora trará a soma total das unidades
+            total = rs.getInt(1); 
         }
     } catch (Exception e) {
-        System.out.println("Erro ao contar produtos: " + e.getMessage());
+        System.out.println("Erro ao somar estoque: " + e.getMessage());
     }
     return total;
 }
 
 private int contarClientes() {
     // Começa com os 5 que você pediu + o que estiver no banco
-    int total = 5; 
+    int total = 0; 
     String sql = "SELECT COUNT(*) FROM clientes";
     try (Connection con = br.com.construex.Conexao.conectar();
          PreparedStatement pst = con.prepareStatement(sql);
@@ -46,7 +51,7 @@ private int contarClientes() {
 
 private double calcularFaturamento() {
     // Começa com o valor base de R$ 4.508,76
-    double faturamentoTotal = 4508.76; 
+    double faturamentoTotal = 0.00; 
     
     // Substitua 'vendas' e 'valor_venda' pelos nomes reais da sua tabela/coluna de vendas
     String sql = "SELECT SUM(valor_venda) FROM vendas"; 
@@ -61,6 +66,29 @@ private double calcularFaturamento() {
     }
     return faturamentoTotal;
 }
+
+private void carregarAlertas() {
+    DefaultTableModel modelo = (DefaultTableModel) tabelaAlertas.getModel();
+    modelo.setNumRows(0); // Limpa a tabela antes de carregar
+    
+    // A inteligência do sistema: busca apenas o que está abaixo de 5
+    String sql = "SELECT nome_produto, quantidade FROM produtos WHERE quantidade < 5";
+    
+    try (Connection con = br.com.construex.Conexao.conectar();
+         PreparedStatement pst = con.prepareStatement(sql);
+         ResultSet rs = pst.executeQuery()) {
+        
+        while (rs.next()) {
+            modelo.addRow(new Object[]{
+                rs.getString("nome_produto"),
+                rs.getInt("quantidade"),
+                "Comprar" // A ação que você pediu!
+            });
+        }
+    } catch (Exception e) {
+        System.out.println("Erro ao carregar alertas: " + e.getMessage());
+    }
+}
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(TelaDashboard.class.getName());
 
@@ -68,6 +96,7 @@ private double calcularFaturamento() {
         initComponents();
         setLocationRelativeTo(null);
         atualizarContadores();
+        carregarAlertas();
         setTitle("CONSTRUEX 1.0");
     
     // Atualiza o label com o nome da pessoa que logou (João, Paulo ou Ana)
@@ -198,7 +227,7 @@ private double calcularFaturamento() {
         jPanel4.setBackground(new java.awt.Color(204, 204, 255));
 
         jLabel10.setFont(new java.awt.Font("Segoe UI", 3, 12)); // NOI18N
-        jLabel10.setText("16");
+        jLabel10.setText("0");
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -225,7 +254,7 @@ private double calcularFaturamento() {
         jLabel7.setText("Clientes Cadastrados");
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 3, 12)); // NOI18N
-        jLabel5.setText("14");
+        jLabel5.setText("0");
 
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
         jPanel8.setLayout(jPanel8Layout);
@@ -252,7 +281,7 @@ private double calcularFaturamento() {
         jLabel9.setText("Clientes Cadastrados");
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 3, 12)); // NOI18N
-        jLabel3.setText("R$ 4.508,76");
+        jLabel3.setText("R$ 0,00");
 
         javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
         jPanel9.setLayout(jPanel9Layout);
@@ -273,9 +302,6 @@ private double calcularFaturamento() {
 
         tabelaAlertas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {"Cimento Campeão 50kg", "3", "Comprar"},
-                {"Cimento Campeão 25kg", "4", "Comprar"},
-                {"LED 100W Eletrix", "1", "Comprar"},
                 {null, null, null},
                 {null, null, null},
                 {null, null, null}

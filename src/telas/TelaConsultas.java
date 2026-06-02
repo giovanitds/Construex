@@ -212,32 +212,34 @@ public class TelaConsultas extends javax.swing.JFrame {
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                        .addComponent(btnApagarClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(400, 400, 400))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel3)
+                            .addComponent(btnApagarProdutos, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(402, 402, 402))))
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGap(25, 25, 25)
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 545, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addGap(182, 182, 182)
-                                .addComponent(jLabel2))
-                            .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                                    .addGap(188, 188, 188)
-                                    .addComponent(jLabel3)
-                                    .addGap(222, 222, 222))
-                                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 545, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(jPanel4Layout.createSequentialGroup()
-                                    .addComponent(txtColaborador, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(148, 148, 148)
-                                    .addComponent(btnConcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jScrollPane2)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                                .addGap(97, 97, 97)
+                                .addComponent(txtColaborador, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 285, Short.MAX_VALUE)
+                                .addComponent(btnConcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(109, 109, 109))
+                            .addComponent(jScrollPane3)))
                     .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGap(232, 232, 232)
-                        .addComponent(btnApagarProdutos, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGap(236, 236, 236)
-                        .addComponent(btnApagarClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(26, Short.MAX_VALUE))
+                        .addGap(362, 362, 362)
+                        .addComponent(jLabel2)))
+                .addContainerGap(22, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -248,9 +250,9 @@ public class TelaConsultas extends javax.swing.JFrame {
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnApagarProdutos)
-                .addGap(38, 38, 38)
+                .addGap(40, 40, 40)
                 .addComponent(jLabel3)
-                .addGap(8, 8, 8)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnApagarClientes)
@@ -272,7 +274,7 @@ public class TelaConsultas extends javax.swing.JFrame {
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(152, 152, 152)
+                .addGap(303, 303, 303)
                 .addComponent(jLabel5)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -291,9 +293,9 @@ public class TelaConsultas extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(36, 36, 36)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(38, Short.MAX_VALUE))
+                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(28, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -310,36 +312,43 @@ public class TelaConsultas extends javax.swing.JFrame {
 
     private void btnConcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConcluirActionPerformed
        // 1. Define explicitamente os botões em português
-        Object[] opcoes = {"Sim", "Não"};
+    Object[] opcoes = {"Sim", "Não"};
 
-        // 2. Pergunta ao usuário se ele deseja mesmo fechar a tela de consultas
-        int resposta = javax.swing.JOptionPane.showOptionDialog(
-                this,
-                "Deseja fechar a tela de Consultas?",
-                "Confirmar Saída",
-                javax.swing.JOptionPane.YES_NO_OPTION,
-                javax.swing.JOptionPane.QUESTION_MESSAGE,
-                null,
-                opcoes,
-                opcoes[0] // Foco padrão no botão "Sim"
-        );
+    // 2. Pergunta ao usuário se ele deseja mesmo sair
+    int resposta = javax.swing.JOptionPane.showOptionDialog(
+            this,
+            "Deseja fechar a tela de Consultas?",
+            "Confirmar Saída",
+            javax.swing.JOptionPane.YES_NO_OPTION,
+            javax.swing.JOptionPane.QUESTION_MESSAGE,
+            null,
+            opcoes,
+            opcoes[0]
+    );
 
-        // 3. Se a resposta for SIM (posição 0 do array), fecha a tela atual e abre o Dashboard
-        if (resposta == 0) {
-            try {
-                TelaDashboard telaDash = new TelaDashboard();
-                telaDash.setLocationRelativeTo(null); // Garante que o menu principal nasça centralizado
-                telaDash.setVisible(true);
-                
-                this.dispose(); // Fecha de forma limpa a TelaConsultas
-            } catch (Exception e) {
-                javax.swing.JOptionPane.showMessageDialog(this,
-                        "Erro ao retornar para o Dashboard: " + e.getMessage(),
-                        "Erro de Sistema",
-                        javax.swing.JOptionPane.ERROR_MESSAGE);
-            }
+    // 3. Se a resposta for SIM
+    if (resposta == 0) {
+        try {
+            // AQUI ESTÁ O PULO DO GATO:
+            // 1. Fecha a tela de consultas primeiro para liberar o banco
+            this.dispose(); 
+            
+            // 2. Instancia o Dashboard. Como o construtor do Dashboard chama 
+            //    o atualizarContadores() e o carregarAlertas(), ele fará 
+            //    novas consultas (SELECT) ao banco, trazendo os valores atualizados.
+            TelaDashboard telaDash = new TelaDashboard();
+            telaDash.setLocationRelativeTo(null);
+            telaDash.setVisible(true);
+            
+        } catch (Exception e) {
+            javax.swing.JOptionPane.showMessageDialog(this,
+                    "Erro ao retornar para o Dashboard: " + e.getMessage(),
+                    "Erro de Sistema",
+                    javax.swing.JOptionPane.ERROR_MESSAGE);
+            // Se der erro, reabre a tela de consultas para não deixar o usuário perdido
+            this.setVisible(true); 
         }
-        // 4. Se a resposta for NÃO (posição 1), o código não faz nada e o operador continua na tela de consultas
+    }
     }//GEN-LAST:event_btnConcluirActionPerformed
 
     private void btnApagarProdutosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnApagarProdutosActionPerformed

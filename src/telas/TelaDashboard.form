@@ -200,7 +200,7 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="12" style="3"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="16"/>
+            <Property name="text" type="java.lang.String" value="0"/>
           </Properties>
         </Component>
       </SubComponents>
@@ -251,7 +251,7 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="12" style="3"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="14"/>
+            <Property name="text" type="java.lang.String" value="0"/>
           </Properties>
         </Component>
       </SubComponents>
@@ -302,7 +302,7 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="12" style="3"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="R$ 4.508,76"/>
+            <Property name="text" type="java.lang.String" value="R$ 0,00"/>
           </Properties>
         </Component>
       </SubComponents>
@@ -317,31 +317,10 @@
         <Component class="javax.swing.JTable" name="tabelaAlertas">
           <Properties>
             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-              <Table columnCount="3" rowCount="6">
-                <Column editable="true" title="Produto" type="java.lang.Object">
-                  <Data value="Cimento Campe&#xe3;o 50kg"/>
-                  <Data value="Cimento Campe&#xe3;o 25kg"/>
-                  <Data value="LED 100W Eletrix"/>
-                  <Data value="null"/>
-                  <Data value="null"/>
-                  <Data value="null"/>
-                </Column>
-                <Column editable="true" title="Qtd. Atual" type="java.lang.Object">
-                  <Data value="3"/>
-                  <Data value="4"/>
-                  <Data value="1"/>
-                  <Data value="null"/>
-                  <Data value="null"/>
-                  <Data value="null"/>
-                </Column>
-                <Column editable="true" title="A&#xe7;&#xe3;o" type="java.lang.Object">
-                  <Data value="Comprar"/>
-                  <Data value="Comprar"/>
-                  <Data value="Comprar"/>
-                  <Data value="null"/>
-                  <Data value="null"/>
-                  <Data value="null"/>
-                </Column>
+              <Table columnCount="3" rowCount="3">
+                <Column editable="true" title="Produto" type="java.lang.Object"/>
+                <Column editable="true" title="Qtd. Atual" type="java.lang.Object"/>
+                <Column editable="true" title="A&#xe7;&#xe3;o" type="java.lang.Object"/>
               </Table>
             </Property>
             <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">

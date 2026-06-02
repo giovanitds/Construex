@@ -184,7 +184,7 @@ public class TelaInicial extends javax.swing.JFrame {
                 // 4. Emite a mensagem personalizada de boas-vindas com base no cargo
                 if (perfil.equalsIgnoreCase("Gerente")) {
                     javax.swing.JOptionPane.showMessageDialog(this,
-                        "Bem-vindo, " + nomeCompleto + "!\nVocê acessou o sistema como gerente.",
+                        "Bem-vindo(a), " + nomeCompleto + "!\nVocê acessou o sistema como gerente.",
                         "Acesso Concedido",
                         javax.swing.JOptionPane.INFORMATION_MESSAGE);
                     
@@ -194,7 +194,7 @@ public class TelaInicial extends javax.swing.JFrame {
 
                 } else if (perfil.equalsIgnoreCase("Funcionário")) {
                     javax.swing.JOptionPane.showMessageDialog(this,
-                        "Bem-into, " + nomeCompleto + "!\nVocê acessou o sistema como funcionário.",
+                        "Bem-vindo(a), " + nomeCompleto + "!\nVocê acessou o sistema como funcionário.",
                         "Acesso Concedido",
                         javax.swing.JOptionPane.INFORMATION_MESSAGE);
                     

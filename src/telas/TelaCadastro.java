@@ -200,7 +200,7 @@ public class TelaCadastro extends javax.swing.JFrame {
         });
 
         jLabel13.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel13.setText("CPF / CNPJ:");
+        jLabel13.setText("CPF/CNPJ:");
 
         txtCpfCnpj.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -679,27 +679,46 @@ if (modoEditando.equals("PRODUTO")) {
         javax.swing.JOptionPane.showMessageDialog(this, "Erro ao atualizar produto: " + e.getMessage());
     }
 } else {
-    // Modo Padrão -> Executa o INSERT (O seu código original de cadastro)
+    // Modo Padrão -> Lógica de Verificação e Inserção/Atualização
+    String sqlVerifica = "SELECT id_produto, quantidade FROM produtos WHERE nome_produto = ?";
+    String sqlUpdateSoma = "UPDATE produtos SET quantidade = quantidade + ?, preco = ? WHERE id_produto = ?";
     String sqlInsert = "INSERT INTO produtos (nome_produto, fornecedor, quantidade, preco) VALUES (?, ?, ?, ?)";
-    try (Connection con = br.com.construex.Conexao.conectar();
-         PreparedStatement pst = con.prepareStatement(sqlInsert)) {
+    
+    try (Connection con = br.com.construex.Conexao.conectar()) {
         
-        pst.setString(1, nome);
-        pst.setString(2, supplier);
-        pst.setInt(3, qtd);
-        pst.setDouble(4, preco);
+        // 1. Verifica se o produto já existe
+        PreparedStatement pstVerifica = con.prepareStatement(sqlVerifica);
+        pstVerifica.setString(1, nome);
+        ResultSet rs = pstVerifica.executeQuery();
         
-        pst.executeUpdate();
-        javax.swing.JOptionPane.showMessageDialog(this, "Produto cadastrado com sucesso!");
+        if (rs.next()) {
+            // PRODUTO JÁ EXISTE: Faz a soma na mesma linha (UPDATE)
+            int idExistente = rs.getInt("id_produto");
+            PreparedStatement pstUpdate = con.prepareStatement(sqlUpdateSoma);
+            pstUpdate.setInt(1, qtd);        // Soma a quantidade nova
+            pstUpdate.setDouble(2, preco);   // Atualiza o preço caso tenha mudado
+            pstUpdate.setInt(3, idExistente); // No ID encontrado
+            pstUpdate.executeUpdate();
+            javax.swing.JOptionPane.showMessageDialog(this, "Produto já existente. Estoque atualizado!");
+        } else {
+            // PRODUTO NOVO: Faz o INSERT normal
+            PreparedStatement pstInsert = con.prepareStatement(sqlInsert);
+            pstInsert.setString(1, nome);
+            pstInsert.setString(2, supplier);
+            pstInsert.setInt(3, qtd);
+            pstInsert.setDouble(4, preco);
+            pstInsert.executeUpdate();
+            javax.swing.JOptionPane.showMessageDialog(this, "Produto cadastrado com sucesso!");
+        }
         
-        // Se quiser que a tela de consultas abra logo após cadastrar um novo:
+        // Abre a tela de consultas
         TelaConsultas telaCons = new TelaConsultas();
         telaCons.setLocationRelativeTo(null);
         telaCons.setVisible(true);
         this.dispose();
         
     } catch (Exception e) {
-        javax.swing.JOptionPane.showMessageDialog(this, "Erro ao cadastrar produto: " + e.getMessage());
+        javax.swing.JOptionPane.showMessageDialog(this, "Erro ao processar cadastro: " + e.getMessage());
     }
 }
     }//GEN-LAST:event_btnCadastrarProdutoActionPerformed
